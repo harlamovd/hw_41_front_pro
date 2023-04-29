@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import VirtualScroll from "./VirtualScroll/VirtualScroll";
+
 
 function App() {
+
+    function createArr (amountBlocks) {
+        const arr = new Array(amountBlocks).fill(0);
+        return  arr.map((el, index, array) => `${el = ++index} block aut of ${array.length}`);
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className='content'>
+            < VirtualScroll arr={createArr(100)} elementHeight={30} visibleElement={8}/>
+        </div>
+
     </div>
   );
 }
